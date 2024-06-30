@@ -1,7 +1,7 @@
 name: Run Colab Notebook
 
 on:
-  workflow_dispatch:  # Allows manual triggering
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
   run-notebook:
@@ -15,12 +15,10 @@ jobs:
       with:
         python-version: '3.8'
 
-    - name: Install Jupyter
+    - name: Install dependencies
       run: |
-        pip install jupyter
-        pip install nbconvert
         pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client
 
-    - name: Run Colab Notebook
+    - name: Run Script
       run: |
-        jupyter nbconvert --to notebook --execute XtoNotion_R3.ipynb --output executed_notebook.ipynb
+        python main_script.py
