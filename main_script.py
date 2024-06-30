@@ -11,14 +11,6 @@ Original file is located at
 !pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client
 
 import subprocess
-import sys
-
-# Install necessary packages
-subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade",
-                       "google-api-python-client", "google-auth-httplib2",
-                       "google-auth-oauthlib", "requests_html", "notion_client"])
-
-# Now, import the necessary libraries
 import os
 import json
 import requests
@@ -27,6 +19,9 @@ from notion_client import Client
 from urllib.parse import urlparse
 import asyncio
 import nest_asyncio
+
+# Install necessary packages
+subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "google-api-python-client", "google-auth-httplib2", "google-auth-oauthlib", "requests_html", "notion_client"])
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
