@@ -1,10 +1,10 @@
-name: Run Colab Notebook
+name: Run Python Script
 
 on:
   workflow_dispatch: # Allows manual triggering
 
 jobs:
-  run-notebook:
+  run-script:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -17,8 +17,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client nbconvert
+        pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client
 
-    - name: Run Jupyter Notebook
-      run: |
-        jupyter nbconvert --to notebook --execute XtoNotion_R3.ipynb --output executed_notebook.ipynb
+    - name: Run Python Script
+      run: python main_script.py
