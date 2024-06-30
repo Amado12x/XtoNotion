@@ -2,6 +2,13 @@ name: Run Python Script
 
 on:
   workflow_dispatch:
+    inputs:
+      x_link:
+        description: 'The X link to process'
+        required: true
+      category:
+        description: 'The category for the X link'
+        required: true
 
 jobs:
   run-script:
@@ -23,4 +30,7 @@ jobs:
     - name: Run Python script
       env:
         SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-      run: python main_script.py
+      run: |
+        echo "X_LINK=${{ github.event.inputs.x_link }}" >> $GITHUB_ENV
+        echo "CATEGORY=${{ github.event.inputs.category }}" >> $GITHUB_ENV
+        python main_script.py
