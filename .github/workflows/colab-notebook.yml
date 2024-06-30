@@ -15,10 +15,11 @@ jobs:
       with:
         python-version: '3.8'
 
-    - name: Install dependencies
+    - name: Install Jupyter
       run: |
+        pip install jupyter
         pip install nbconvert
-        pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+        pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client
 
     - name: Run Colab Notebook
       run: |
