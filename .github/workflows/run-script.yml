@@ -18,7 +18,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client
+        pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client lxml_html_clean
 
     - name: Run Python script
       run: python main_script.py
