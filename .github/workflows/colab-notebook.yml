@@ -17,8 +17,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client
+        pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client nbconvert
 
-    - name: Run Script
+    - name: Run Jupyter Notebook
       run: |
-        python main_script.py
+        jupyter nbconvert --to notebook --execute XtoNotion_R3.ipynb --output executed_notebook.ipynb
