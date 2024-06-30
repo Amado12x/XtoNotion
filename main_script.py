@@ -10,6 +10,15 @@ Original file is located at
 # Install necessary packages and mount Google Drive
 !pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client
 
+import subprocess
+import sys
+
+# Install necessary packages
+subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade",
+                       "google-api-python-client", "google-auth-httplib2",
+                       "google-auth-oauthlib", "requests_html", "notion_client"])
+
+# Now, import the necessary libraries
 import os
 import json
 import requests
@@ -18,6 +27,7 @@ from notion_client import Client
 from urllib.parse import urlparse
 import asyncio
 import nest_asyncio
+
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
@@ -26,11 +36,11 @@ from googleapiclient.http import MediaFileUpload
 IMGUR_CLIENT_ID = '326b12ff922fa0b'
 
 # Notion credentials
-NOTION_TOKEN = 'secret_8sdnrAKx6tCdNwDhu6fjmBmaZf23va0G'
+NOTION_TOKEN = 'secret_8sdnrAKx6tCdNwDhu6fjmBmaZf23vaRbGbMGdnyKm5q'
 DATABASE_ID = '32109f9347b041aa963712d943f572aa'
 
 # Google Drive credentials
-SERVICE_ACCOUNT_FILE = 'xtonotion-ff023d1e2552.json'  # Path to the service account JSON file
+SERVICE_ACCOUNT_FILE = '/content/drive/MyDrive/Colab Notebooks/xtonotion-ff023d1e2552.json'  # Path to the downloaded JSON file
 FOLDER_ID = '1l4PKOPz-auCi1z0GZOa4Ok7DQ09pXoGv'  # Update this with your folder ID
 
 # Scopes for Google Drive API
@@ -50,6 +60,7 @@ notion = Client(auth=NOTION_TOKEN)
 
 async def scrape_x_link(x_link):
     print(f"Scraping link: {x_link}")
+
     session = AsyncHTMLSession()
     response = await session.get(x_link)
     await response.html.arender(sleep=5)  # Render the JavaScript
