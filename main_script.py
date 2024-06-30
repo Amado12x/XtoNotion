@@ -7,10 +7,8 @@ Original file is located at
     https://colab.research.google.com/drive/1tfsDGqo3jV1qp-lkVBDZKES72_uxfBbP
 """
 
-# Install necessary packages and mount Google Drive
-!pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib requests_html notion_client
-
 import subprocess
+import sys
 import os
 import json
 import requests
