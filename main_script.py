@@ -159,8 +159,8 @@ def save_to_notion(post_text, post_image, author, category, link):
 
 async def main():
     print("Main function started")
-    x_link = 'https://x.com/aisolopreneur/status/1806116065866584489?s=52&t=5HGYPwHEzZYlYwwa8QPw9Q'  # Replace with an actual X link for testing
-    category = 'Test Category'  # Ensure this is a valid select option in your Notion database
+    x_link = os.getenv('X_LINK')  # Get the X link from environment variable
+    category = os.getenv('CATEGORY')  # Get the category from environment variable
     print(f"Scraping link: {x_link} with category: {category}")
     post_text, post_image, author, images = await scrape_x_link(x_link)
     print(f"Scraped data - Text: {post_text}, Image: {post_image}, Author: {author}, Images: {images}")
