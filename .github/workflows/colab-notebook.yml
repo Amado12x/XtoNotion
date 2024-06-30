@@ -1,0 +1,25 @@
+name: Run Colab Notebook
+
+on:
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  run-notebook:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        pip install nbconvert
+        pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+    - name: Run Colab Notebook
+      run: |
+        jupyter nbconvert --to notebook --execute XtoNotion_R3.ipynb --output executed_notebook.ipynb
